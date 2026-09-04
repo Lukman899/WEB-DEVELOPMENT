@@ -112,5 +112,12 @@
 
 // fun1()
 
+
+// {IN BROWSER}
+// console.log(globalThis === window); // {IN BROWSER} // true
 // console.log(window === this); // {IN BROWSER} // true
+
+
+// {IN NODE}
+console.log(globalThis === global); // true
 console.log(global === this); // false
