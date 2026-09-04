@@ -1,0 +1,118 @@
+span {
+  color: purple;
+}
+
+h3 {
+  color: rgb(9, 255, 0);
+}
+
+p {
+  color: red;
+}
+
+a,
+li {
+  color: purple;
+}
+
+.hello {
+  color: brown;
+}
+
+#nihal {
+  color: aqua;
+  background-color: blueviolet;
+}
+
+UNIVERSAL SELECTOR*/ * {
+  color: green;
+}
+
+.rakhi {
+  color: blue;
+}
+
+h1 {
+  color: aqua;
+}
+
+#bhavya {
+  color: green;
+}
+
+ div{ 
+  color: darkcyan;
+} 
+
+ div > p{
+  color: blue;
+} 
+
+ a+p {
+  color: blue;
+}  
+
+ a ~ p{
+  color: blue;
+} /* not more use <useless> */
+ h1:hover {
+  background-color: red;
+} 
+
+ li:hover{
+  color: red;
+} 
+
+ li:first-child{
+  color: green;
+} 
+
+ li:last-child{
+  color: green;
+} 
+
+ li:nth-child(2){
+  color: blue;
+} 
+
+ li:nth-child(2n ){
+  color: blue;
+} /* an+b 
+  a= 2n = 0 1 2 3 4 5 
+  
+          2 4 6 8 */
+
+ li:nth-child(2n + 1 ){
+  color: blue; 
+}*/ /* 1 3 5 7 9 11 */
+
+ li:nth-child(2n + 2 ){
+  color: blue;
+} /* same work */
+
+ li:nth-child(2n + 3 ){
+  color: blue;
+} /* 3 5 7 9 11 */
+
+h1::after {
+  content: " Ji ";
+}
+
+ h1::before {
+  content: " Hi ";
+} 
+
+
+h1::first-letter{
+  color: blue;
+}
+
+h1::first-letter{
+  font-size: 36px;
+}
+
+::selection{
+  color: black;
+  background-color: red;
+}
+

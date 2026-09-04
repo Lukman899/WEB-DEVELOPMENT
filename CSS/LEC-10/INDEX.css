@@ -1,0 +1,60 @@
+#font {
+  font-family: "Yuyu";
+}
+
+h2 {
+  font-family: normal;
+}
+
+#size {
+  font-size: 30px;
+  text-shadow: -1px -1px 10px red;
+}
+
+#style {
+  font-style: italic;
+}
+
+p {
+  font-size: 25px;
+  font-weight: bolder;
+  text-indent: 50px;
+}
+
+#lorem {
+  font-style: italic;
+  font-variant: small-caps;
+  line-height: 1;
+  letter-spacing: 10;
+  /* letter-spacing: -10px; */
+  word-spacing: 10px;
+  /* word-spacing: -10px; */
+}
+
+#vikas {
+  text-align: center;
+  border: 1px solid red;
+}
+
+#lorem ipsum {
+  /* border: 1px solid red; */
+  text-align: center;
+  /* text-decoration: underline dotted; */
+  /* text-decoration: overline; */
+  /* text-decoration: underline; */
+  /* text-decoration: line-through; */
+  /* text-decoration: underline wavy red; */
+  /* text-transform: capitalize; */
+  /* text-transform: lowercase; */
+  /* text-transform: uppercase; */
+}
+
+em {
+  font-style: normal;
+}
+
+#color {
+  /* color: red; */
+  /* color: rgb(255, 0, 0); */
+  color: hsl(0, 98%, 50%);
+}
