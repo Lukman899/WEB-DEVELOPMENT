@@ -119,5 +119,5 @@
 
 
 // {IN NODE}
-console.log(globalThis === global); // true
-console.log(global === this); // false
+// console.log(globalThis === global); // true
+// console.log(global === this); // false
