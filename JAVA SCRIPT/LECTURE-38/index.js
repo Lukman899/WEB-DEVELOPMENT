@@ -111,3 +111,6 @@
 // }
 
 // fun1()
+
+// console.log(window === this); // {IN BROWSER} // true
+console.log(global === this); // false
