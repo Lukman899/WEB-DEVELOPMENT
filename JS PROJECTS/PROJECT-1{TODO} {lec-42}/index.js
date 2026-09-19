@@ -1,118 +1,273 @@
-
-//'Go to gym', "Revision Web dev", "Take class"
-let todos = [
-    {
-        id: Date.now() + 1,
-        text: "Go to gym",
-        isCompleted: false
-    },
-    {
-        id: Date.now() + 2,
-        text: "Revision Web dev",
-        isCompleted: true
-    },
-    {
-        id: Date.now() + 3,
-        text: "Take class",
-        isCompleted: false
-    }
-]
-
-
 const todoForm = document.querySelector("#todo-form")
 const todoInput = document.querySelector("#todo-input")
 const todoList = document.querySelector("#todo-list")
-
-todoForm.addEventListener('submit', (e) => {
-    e.preventDefault()
-
-
-    const todoValue = todoInput.value;
-    todos.push(todoValue) // this for saving 
+const formBtn = document.querySelector("#form-btn")
+const taskCount = document.querySelector("#task-count")
+const completeCount = document.querySelector("#complete-count")
+const cancelBtn = document.querySelector("#cancel-btn")
 
 
-    let newTodo = {
-        id: Date.now(),
-        text: todoValue,
-        isCompleted: false
-    }
+// Get todos from localStorage
+let todos = JSON.parse(localStorage.getItem("todos")) || [];
 
-    addTodo(newTodo)
+console.log(todos);
 
-    // renderTodo() // jab koi naya todo add hoga first updated todos render ho jayenge
-
-})
-
-function renderTodo() {
-    todoList.innerHTML = ""
-    todos.forEach(function (todo) {
-        addTodo(todo)
-    })
-}
-
-renderTodo() // jab first time file execute hogi tab existing todos render ho jayenge
+let editTodoId = null;
 
 
-function addTodo(todo) {
-    const li = document.createElement("li") // <li></li>
-    // li.textContent = todo.text // <li> {Actuall Todo} </li>
-    li.dataset.id = todo.id
-    li.className = `flex gap-2 border border-slate-300 p-4 rounded-xl`
-    li.innerHTML = `
-                    <input data-id=${todo.id} ${todo.isCompleted === true ? 'checked' : ""} type="checkbox">
-                    <p class="flex-1">${todo.text}</p>
-                    <div class="flex gap-2">
-                        <button data-action="edit" data-id=${todo.id}>Edit</button>
-                        <button data-action="delete" data-id=${todo.id}>Delete</button>
-                    </div>
-    `
-    todoList.append(li) // ul -> li
+// ================= SAVE TODOS =================
+
+function saveTodos() {
+    localStorage.setItem("todos", JSON.stringify(todos));
 }
 
 
-// event delegation
-todoList.addEventListener('click', (e) => {
+// ================= FORM SUBMIT =================
 
-    let li = e.target.closest('li')
-    let btn = e.target.closest('button')
-    let action = btn?.dataset.action;
-    let id = li?.dataset?.id
-    let checkbox = e.target.closest('input[type="checkbox"]') // css selector to select only checkbox input element
+todoForm.addEventListener("submit", (e) => {
+    e.preventDefault();
 
+    const todoValue = todoInput.value.trim();
 
-    if (action === "edit") {
-        // edit wala part
-        console.log("editing....");
+    if (!todoValue) {
+        return;
     }
 
-    if (action === "delete") {
-        deleteTodo(e, id)
-    }
+    console.log({ editTodoId, todoValue });
 
-    if (checkbox) {
+
+    // ================= EDITING =================
+
+    if (editTodoId) {
+
         todos = todos.map((todo) => {
-            if (todo.id === Number(id)) {
-                console.log("hii");
+
+            if (todo.id === Number(editTodoId)) {
                 return {
                     ...todo,
-                    isCompleted: !todo.isCompleted
+                    text: todoValue
                 }
             }
 
-            return todo
-        })
+            return todo;
+        });
 
-        console.log(todos);
+
+    } else {
+
+        // ================= ADDING =================
+
+        const newTodo = {
+            id: Date.now(),
+            text: todoValue,
+            isCompleted: false
+        };
+
+        todos.push(newTodo);
     }
-})
 
-function deleteTodo(e, id) {
-    e.target.closest('li').remove()
+
+    // Save updated todos
+    saveTodos();
+
+    cancelEdit();
+
+    renderTodo();
+});
+
+
+
+// ================= RENDER TODOS =================
+
+function renderTodo() {
+
+    todoList.innerHTML = "";
+
+    todos.forEach((todo) => {
+
+        const li = document.createElement("li");
+
+        li.className =
+            "flex gap-2 border border-slate-300 p-4 rounded-xl";
+
+        li.dataset.id = todo.id;
+
+        li.innerHTML = `
+            <input
+                data-action="toggle"
+                ${todo.isCompleted ? "checked" : ""}
+                type="checkbox"
+            >
+
+            <p class="flex-1 ${
+                todo.isCompleted
+                    ? "line-through text-red-400"
+                    : ""
+            }">
+                ${todo.text}
+            </p>
+
+            <div class="flex gap-2">
+
+                <button
+                    data-action="edit"
+                    class="px-2.5 py-1 text-xs font-medium text-amber-600 bg-amber-50 hover:bg-amber-100 rounded transition-colors cursor-pointer">
+                    Edit
+                </button>
+
+                <button
+                    data-action="delete"
+                    class="px-2.5 py-1 text-xs font-medium text-rose-600 bg-rose-50 hover:bg-rose-100 rounded transition-colors cursor-pointer">
+                    Delete
+                </button>
+
+            </div>
+        `;
+
+        todoList.append(li);
+    });
+
+
+    // Total tasks
+    taskCount.textContent = `TASKS (${todos.length})`;
+
+
+    // Completed tasks
+    completeCount.textContent =
+        `COMPLETED: ${
+            todos.filter((todo) => todo.isCompleted).length
+        }`;
+}
+
+
+renderTodo();
+
+
+
+// ================= EVENT DELEGATION =================
+
+todoList.addEventListener("click", (e) => {
+
+    const li = e.target.closest("li");
+
+    // Agar li par click nahi hua
+    if (!li) {
+        return;
+    }
+
+    const id = li.dataset.id;
+
+    const action = e.target.dataset.action;
+
+
+    // DELETE
+    if (action === "delete") {
+        deleteTodo(id);
+    }
+
+
+    // EDIT
+    if (action === "edit") {
+        startEdit(id);
+    }
+
+
+    // TOGGLE COMPLETE
+    if (action === "toggle") {
+
+        todos = todos.map((todo) => {
+
+            if (todo.id === Number(id)) {
+
+                return {
+                    ...todo,
+                    isCompleted: !todo.isCompleted
+                };
+            }
+
+            return todo;
+        });
+
+
+        saveTodos();
+
+        renderTodo();
+    }
+});
+
+
+
+// ================= DELETE TODO =================
+
+function deleteTodo(id) {
 
     todos = todos.filter((todo) => {
-        if (todo.id !== Number(id)) {
-            return todo
-        }
-    })
-    // renderTodo() 
+        return todo.id !== Number(id);
+    });
+
+
+    saveTodos();
+
+    renderTodo();
 }
+
+
+
+// ================= START EDIT =================
+
+function startEdit(id) {
+
+    editTodoId = id;
+
+    const currentTodo = todos.find((todo) => {
+        return todo.id === Number(id);
+    });
+
+
+    if (!currentTodo) {
+        return;
+    }
+
+
+    todoInput.value = currentTodo.text;
+
+
+    formBtn.textContent = "Update";
+
+    formBtn.className =
+        "px-5 py-2 bg-amber-600 hover:bg-amber-700 text-white font-medium rounded-lg transition-colors cursor-pointer";
+
+
+    cancelBtn.classList.remove("hidden");
+}
+
+
+
+// ================= CANCEL EDIT =================
+
+function cancelEdit() {
+
+    editTodoId = null;
+
+    todoInput.value = "";
+
+
+    formBtn.textContent = "Add";
+
+    formBtn.className =
+        "px-5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg transition-colors cursor-pointer";
+
+
+    cancelBtn.classList.add("hidden");
+}
+
+
+
+// ================= CANCEL BUTTON =================
+
+cancelBtn.addEventListener("click", (e) => {
+
+    e.preventDefault();
+
+    cancelEdit();
+});
