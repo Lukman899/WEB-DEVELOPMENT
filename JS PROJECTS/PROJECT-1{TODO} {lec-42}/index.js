@@ -6,268 +6,175 @@ const taskCount = document.querySelector("#task-count")
 const completeCount = document.querySelector("#complete-count")
 const cancelBtn = document.querySelector("#cancel-btn")
 
+//'Go to gym', "Revision Web dev", "Take class"
 
-// Get todos from localStorage
 let todos = JSON.parse(localStorage.getItem("todos")) || [];
 
-console.log(todos);
-
-let editTodoId = null;
-
-
-// ================= SAVE TODOS =================
-
-function saveTodos() {
-    localStorage.setItem("todos", JSON.stringify(todos));
-}
-
-
-// ================= FORM SUBMIT =================
-
-todoForm.addEventListener("submit", (e) => {
-    e.preventDefault();
+let editTodoId = null  // flag
+todoForm.addEventListener('submit', (e) => {
+    e.preventDefault()
 
     const todoValue = todoInput.value.trim();
 
+    // aagr todo is value empty hai means "" then we do !"" -> true and ! is logical not operator
     if (!todoValue) {
-        return;
+        return
     }
 
     console.log({ editTodoId, todoValue });
 
-
-    // ================= EDITING =================
-
     if (editTodoId) {
-
+        // editing 
         todos = todos.map((todo) => {
-
             if (todo.id === Number(editTodoId)) {
                 return {
                     ...todo,
                     text: todoValue
                 }
             }
+            return todo
+        })
 
-            return todo;
-        });
+        localStorage.setItem("todos" , JSON.stringify(todos))
 
 
     } else {
-
-        // ================= ADDING =================
-
-        const newTodo = {
+        //adding
+        let newTodo = {
             id: Date.now(),
             text: todoValue,
             isCompleted: false
-        };
+        }
 
-        todos.push(newTodo);
+        todos.push(newTodo) // adding new todo to exisiting todos list
+        localStorage.setItem("todos" , JSON.stringify(todos))
+
+        // todos.push({
+        //     id: Date.now(),
+        //     text: todoValue,
+        //     isCompleted: false
+        // })
     }
-
-
-    // Save updated todos
-    saveTodos();
 
     cancelEdit();
-
-    renderTodo();
-});
-
+    renderTodo() // jab koi naya todo add hoga firse updated todos render ho jayenge
+})
 
 
-// ================= RENDER TODOS =================
 
 function renderTodo() {
-
-    todoList.innerHTML = "";
-
+    todoList.innerHTML = ""
+    //  or 
+    // todoList.textContent = ""
     todos.forEach((todo) => {
-
         const li = document.createElement("li");
 
-        li.className =
-            "flex gap-2 border border-slate-300 p-4 rounded-xl";
+        // li.setAttribute("class" , "flex gap-2 border border-slate-300 p-4 rounded-xl")
+        // or
+        li.className = "flex gap-2 border border-slate-300 p-4 rounded-xl"
 
-        li.dataset.id = todo.id;
+        // li.setAttribute("data-id", todo.id) // this is jugad
+        // or
+        li.dataset.id = todo.id // this is original method
 
         li.innerHTML = `
-            <input
-                data-action="toggle"
-                ${todo.isCompleted ? "checked" : ""}
-                type="checkbox"
-            >
-
-            <p class="flex-1 ${
-                todo.isCompleted
-                    ? "line-through text-red-400"
-                    : ""
-            }">
-                ${todo.text}
-            </p>
-
-            <div class="flex gap-2">
-
-                <button
-                    data-action="edit"
-                    class="px-2.5 py-1 text-xs font-medium text-amber-600 bg-amber-50 hover:bg-amber-100 rounded transition-colors cursor-pointer">
-                    Edit
-                </button>
-
-                <button
-                    data-action="delete"
-                    class="px-2.5 py-1 text-xs font-medium text-rose-600 bg-rose-50 hover:bg-rose-100 rounded transition-colors cursor-pointer">
-                    Delete
-                </button>
-
-            </div>
-        `;
-
-        todoList.append(li);
-    });
+                    <input data-action="toogle" ${todo.isCompleted ? "checked" : ""} type="checkbox">
+                    <p class="flex-1 ${todo.isCompleted ? "line-through text-red-400" : ""}">${todo.text}</p>
+                    <div class="flex gap-2">
+                        <button data-action="edit" class="px-2.5 py-1 text-xs font-medium text-amber-600 bg-amber-50 hover:bg-amber-100 rounded transition-colors cursor-pointer" >Edit</button>
+                        <button data-action="delete" class="px-2.5 py-1 text-xs font-medium text-rose-600 bg-rose-50 hover:bg-rose-100 rounded transition-colors cursor-pointer" >Delete</button>
+                    </div>`
 
 
-    // Total tasks
-    taskCount.textContent = `TASKS (${todos.length})`;
+        todoList.append(li) // here we want exact/valid html code
+    })
 
-
-    // Completed tasks
-    completeCount.textContent =
-        `COMPLETED: ${
-            todos.filter((todo) => todo.isCompleted).length
-        }`;
+    taskCount.textContent = `TASKS (${todos.length})`
+    completeCount.textContent = `COMPLETED: ${todos.filter((todo) => todo.isCompleted).length}`
 }
 
-
-renderTodo();
-
+renderTodo() // jab first time file execute hogi tab existing todos render ho jayenge
 
 
-// ================= EVENT DELEGATION =================
+// event delegation
+todoList.addEventListener('click', (e) => {
+    e.stopPropagation()
 
-todoList.addEventListener("click", (e) => {
+    // console.log(e.target); // e.target -> jis element per click krte ho
+    // console.log(e.currentTarget); // e.currentTarget -> jis element per event listener attached hai
 
-    const li = e.target.closest("li");
+    // console.log(e.target.parentElement);
 
-    // Agar li par click nahi hua
-    if (!li) {
-        return;
-    }
-
+    const li = e.target.closest('li')
     const id = li.dataset.id;
 
-    const action = e.target.dataset.action;
 
+    let action = e.target.dataset.action
 
-    // DELETE
     if (action === "delete") {
-        deleteTodo(id);
+        deleteTodo(id)
     }
 
-
-    // EDIT
     if (action === "edit") {
-        startEdit(id);
+        startEdit(id)
     }
 
-
-    // TOGGLE COMPLETE
-    if (action === "toggle") {
-
+    if (action === "toogle") {
         todos = todos.map((todo) => {
-
             if (todo.id === Number(id)) {
-
                 return {
                     ...todo,
                     isCompleted: !todo.isCompleted
-                };
+                }
             }
-
-            return todo;
-        });
-
-
-        saveTodos();
-
-        renderTodo();
+            return todo
+        })
+        localStorage.setItem("todos" , JSON.stringify(todos))
+        renderTodo()
     }
-});
-
-
-
-// ================= DELETE TODO =================
+})
 
 function deleteTodo(id) {
-
     todos = todos.filter((todo) => {
-        return todo.id !== Number(id);
-    });
-
-
-    saveTodos();
-
-    renderTodo();
+        if (todo.id !== Number(id)) {
+            return todo
+        }
+    })
+    localStorage.setItem("todos" , JSON.stringify(todos))
+    renderTodo()
 }
 
-
-
-// ================= START EDIT =================
-
 function startEdit(id) {
-
     editTodoId = id;
 
-    const currentTodo = todos.find((todo) => {
-        return todo.id === Number(id);
-    });
+    let currentTodo = todos.find((todo) => {
+        if (todo.id === Number(id)) {
+            return todo
+        }
+    })
 
-
-    if (!currentTodo) {
-        return;
-    }
-
-
-    todoInput.value = currentTodo.text;
-
-
-    formBtn.textContent = "Update";
-
+    todoInput.value = currentTodo.text
+    formBtn.textContent = "Update"
     formBtn.className =
         "px-5 py-2 bg-amber-600 hover:bg-amber-700 text-white font-medium rounded-lg transition-colors cursor-pointer";
-
 
     cancelBtn.classList.remove("hidden");
 }
 
-
-
-// ================= CANCEL EDIT =================
-
 function cancelEdit() {
-
     editTodoId = null;
 
     todoInput.value = "";
-
 
     formBtn.textContent = "Add";
 
     formBtn.className =
         "px-5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg transition-colors cursor-pointer";
 
-
     cancelBtn.classList.add("hidden");
 }
 
 
-
-// ================= CANCEL BUTTON =================
-
-cancelBtn.addEventListener("click", (e) => {
-
-    e.preventDefault();
-
+cancelBtn.addEventListener("click", () => {
     cancelEdit();
 });
