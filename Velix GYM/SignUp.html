@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>VELIX GYM</title>
+
+    <!-- Montserrat Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="output.css">
+
+    <style>
+        body {
+            background-color: black;
+            color: white;
+        }
+
+        body.dark-mode {
+            background-color: white;
+            color: black;
+        }
+
+        .heading {
+            font-family: "Montserrat", sans-serif;
+        }
+
+        .outline-text {
+            color: transparent;
+            -webkit-text-stroke: 1px #777;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <section>
+        <header class="flex font-bold items-center justify-between px-4 py-4 flex-col md:flex-row w-full">
+            <div class="flex w-full items-center justify-between md:w-auto">
+                <h1 class="text-2xl">VELIX <span class="text-lime-300">GYM</span></h1>
+            </div>
+
+            <nav class="justify-center items-center flex gap-4 mt-3 md:mt-0 md:gap-8 lg:gap-12">
+                <a href="index.html">Home</a>
+                <a href="SignUp.html">SignUp</a>
+                <a href="Contact.html">Contact Us</a>
+
+                <!-- DARK/LIGHT MODE BUTTON -->
+                <button id="themeBtn" class="text-xl md:text-2xl lg:text-3xl cursor-pointer">
+                    🌙
+                </button>
+            </nav>
+        </header>
+    </section>
+
+
+    <section class="px-4 md:px-8 lg:px-12">
+
+        <a href="index.html">← Back To Home</a>
+
+        <div class="pt-6">
+            <h1 class="font-bold text-5xl md:text-6xl lg:text-7xl">START YOUR <br> <span
+                    class="font-bold text-lime-300">JOURNEY</span></h1>
+            <p class="pt-4 font-normal text-gray-500">Fill In Your Details To Get Started With Your Fitness Journey</p>
+            <br>
+        </div>
+
+
+        <div class="border border-blue-300 rounded-xl w-full md:w-[600px] lg:w-[700px] bg-blue-50 text-black">
+
+            <h3 class="px-7 pt-6 font-bold">Selected Plan</h3>
+
+            <div class="border border-blue-300 rounded-xl mx-7 mt-2 bg-blue-100">
+
+                <div class="flex items-center justify-between gap-2 p-3">
+
+                    <div class="flex items-center gap-3 min-w-0">
+                        <img src="premiumCrown.jpg" alt="" class="w-10 h-10 shrink-0">
+
+                        <div>
+                            <h3 class="font-bold">Premium Plan</h3>
+                            <p class="text-sm">All Premium Features Included</p>
+                        </div>
+                    </div>
+
+                    <div class="shrink-0">
+                        <p class="font-bold"><big>$59</big> <small>/month</small></p>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <form action="">
+
+                <div class="flex flex-col px-7 mt-5">
+                    <label for="name" class="font-bold">Full Name:</label>
+                    <input type="text" id="name" class="border border-blue-300 w-full px-2 py-1"
+                        placeholder="Enter Your Full Name">
+                </div><br>
+
+
+                <div class="flex flex-col md:flex-row md:gap-5 px-7">
+
+                    <div class="flex flex-col w-full">
+                        <label for="age" class="font-bold">Age:</label>
+                        <input type="text" id="age" class="border border-blue-300 w-full px-2 py-1"
+                            placeholder="Enter Your Age">
+                    </div>
+
+                    <div class="flex flex-col w-full mt-5 md:mt-0">
+                        <label for="gender" class="font-bold">Gender</label>
+                        <select name="Gender" id="gender"
+                            class="border border-blue-300 w-full px-2 py-1 cursor-pointer">
+                            <option value="">Select</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                    </div>
+
+                </div><br>
+
+
+                <div class="flex flex-col px-7">
+                    <label for="email" class="font-bold">Email:</label>
+                    <input type="email" id="email" class="border border-blue-300 w-full px-2 py-1"
+                        placeholder="Enter Your Email Address">
+                </div><br>
+
+
+                <div class="flex flex-col px-7">
+                    <label for="phone" class="font-bold">Phone Number:</label>
+                    <input type="tel" id="phone" class="border border-blue-300 w-full px-2 py-1"
+                        placeholder="Enter Your Phone Number">
+                </div><br>
+
+
+                <div class="flex flex-col px-7">
+                    <label for="password" class="font-bold">Password:</label>
+                    <input type="password" id="password" class="border border-blue-300 w-full px-2 py-1"
+                        placeholder="Enter Your Password">
+                </div><br>
+
+
+                <div class="flex flex-col px-7">
+                    <label for="confirm" class="font-bold">Confirm Password:</label>
+                    <input type="password" id="confirm" class="border border-blue-300 w-full px-2 py-1"
+                        placeholder="Confirm Your Password">
+                </div><br>
+
+
+                <div class="flex flex-col px-7">
+                    <label for="plan" class="font-bold">Select Plan</label>
+                    <select name="Plan" id="plan" class="border border-blue-300 w-full px-2 py-1 cursor-pointer">
+                        <option value="">Choose A Plan</option>
+                        <option value="Basic Plan">Basic Plan</option>
+                        <option value="Premium Plan">Premium Plan</option>
+                        <option value="Elite Plan">Elite Plan</option>
+                    </select>
+                </div><br>
+
+            </form>
+
+
+            <div>
+                <button
+                    class="block mx-auto w-[90%] bg-lime-400 h-10 rounded-xl hover:bg-amber-500 active:bg-amber-500 cursor-pointer">Sign
+                    Up →</button>
+            </div><br>
+
+        </div>
+
+    </section>
+
+
+    <script src="index.js"></script>
+
+</body>
+
+</html>

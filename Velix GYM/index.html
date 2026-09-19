@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>VELIX GYM</title>
+
+    <!-- Montserrat Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="output.css">
+
+    <style>
+        body {
+            background-color: black;
+            color: white;
+
+            background-image:
+                linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),
+                url("bg1velixgym.png");
+
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        body.dark-mode {
+            color: white;
+        }
+
+        .heading {
+            font-family: "Montserrat", sans-serif;
+        }
+
+        .outline-text {
+            color: transparent;
+            -webkit-text-stroke: 1px #777;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <section>
+        <header class="flex font-bold items-center justify-between px-4 py-4 flex-col md:flex-row w-full">
+            <div class="flex w-full items-center justify-between md:w-auto">
+                <h1 class="text-2xl">VELIX <span class="text-lime-300">GYM</span></h1>
+            </div>
+
+            <nav class="justify-center flex gap-4 mt-3 md:mt-0 md:gap-8 lg:gap-12">
+                <a href="index.html">Home</a>
+                <a href="SignUp.html">SignUp</a>
+                <a href="Contact.html">Contact Us</a>
+            </nav>
+
+            <!-- DARK/LIGHT MODE BUTTON -->
+            <button id="themeBtn" class="text-xl md:text-2xl lg:text-3xl cursor-pointer mt-3 md:mt-0">
+                🌙
+            </button>
+        </header>
+    </section>
+
+
+    <!-- HEADING -->
+    <h1 class="heading text-center font-extrabold pt-10 text-3xl md:text-4xl lg:text-5xl">
+        <span class="outline-text">FLEXIBLE</span>
+        <span>PLANS FOR</span>
+        <br>
+        <span>EVERY BUDGET</span>
+    </h1>
+
+    <br>
+
+    <small class="block text-gray-400 text-center px-4 md:text-sm lg:text-base">Choose a plan that suits you. No long-term Commitments required.</small>
+
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 px-4 md:px-8 lg:px-4 py-15 max-w-6xl mx-auto">
+
+        <section class="border border-gray-500 w-full min-h-100 bg-transparent">
+            <article class="font-extrabold">
+                <h1 class="text-center">Basic Plan</h1>
+
+                <div class="text-lime-300 p-2 font-extrabold text-center">
+                    <span class="text-4xl font-serif">$39</span>
+                    <span class="text-sm">/month</span>
+                </div>
+
+                <div>
+                    <p class="p-1 h-8 font-normal bg-zinc-600 text-center text-white w-full">3 DAYS/WEEK</p>
+
+                    <div class="flex gap-2 items-center p-2 m-3 text-sm font-normal">
+                        <img src="Untitled.svg" alt="" width="24" height="24" class="w-6 h-6">
+                        <p>Access All Cardio Classes</p>
+                    </div>
+
+                    <div class="flex gap-2 items-center p-2 m-3 text-sm font-normal">
+                        <img src="Untitled.svg" alt="" width="24" height="24" class="w-6 h-6">
+                        <p>Monthly Body Assessment</p>
+                    </div>
+
+                    <div class="flex gap-2 items-center p-2 m-3 text-sm font-normal">
+                        <img src="Untitled.svg" alt="" width="24" height="24" class="w-6 h-6">
+                        <p>Nutritional Guide</p>
+                    </div>
+
+                    <div class="px-6 mt-5">
+                        <a href="SignUp.html" class="block bg-lime-300 text-black w-full py-3 text-center text-sm font-bold cursor-pointer hover:bg-amber-500 active:bg-amber-500">Get Started</a>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+
+        <section class="border border-gray-500 w-full min-h-100 bg-transparent">
+            <article class="font-extrabold">
+                <h1 class="text-center">Premium Plan</h1>
+
+                <div class="text-lime-300 p-2 font-extrabold text-center">
+                    <span class="text-4xl font-serif">$59</span>
+                    <span class="text-sm">/month</span>
+                </div>
+
+                <div>
+                    <p class="p-1 h-8 font-normal bg-zinc-600 text-center text-white w-full">3 DAYS/WEEK</p>
+
+                    <div class="flex gap-2 items-center p-2 m-3 text-sm font-normal">
+                        <img src="Untitled.svg" alt="" width="24" height="24" class="w-6 h-6">
+                        <p>All Basic Plan Features</p>
+                    </div>
+
+                    <div class="flex gap-2 items-center p-2 m-3 text-sm font-normal">
+                        <img src="Untitled.svg" alt="" width="24" height="24" class="w-6 h-6">
+                        <p>Strength Training Sessions</p>
+                    </div>
+
+                    <div class="flex gap-2 items-center p-2 m-3 text-sm font-normal">
+                        <img src="Untitled.svg" alt="" width="24" height="24" class="w-6 h-6">
+                        <p>Nutritional Guide</p>
+                    </div>
+
+                    <div class="px-6 mt-5">
+                        <a href="SignUp.html" class="block bg-lime-300 text-black w-full py-3 text-center text-sm font-bold cursor-pointer hover:bg-amber-500 active:bg-amber-500">Get Started</a>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+
+        <section class="border border-gray-500 w-full min-h-100 bg-transparent md:col-span-2 md:max-w-[50%] md:mx-auto lg:col-span-1 lg:max-w-none">
+            <article class="font-extrabold">
+                <h1 class="text-center">Elite Plan</h1>
+
+                <div class="text-lime-300 p-2 font-extrabold text-center">
+                    <span class="text-4xl font-serif">$89</span>
+                    <span class="text-sm">/month</span>
+                </div>
+
+                <div>
+                    <p class="p-1 h-8 font-normal bg-zinc-600 text-center text-white w-full">3 DAYS/WEEK</p>
+
+                    <div class="flex gap-2 items-center p-2 m-3 text-sm font-normal">
+                        <img src="Untitled.svg" alt="" width="24" height="24" class="w-6 h-6">
+                        <p>All Premium Plan Features</p>
+                    </div>
+
+                    <div class="flex gap-2 items-center p-2 m-3 text-sm font-normal">
+                        <img src="Untitled.svg" alt="" width="24" height="24" class="w-6 h-6">
+                        <p>Personal Training Sessions Per Month</p>
+                    </div>
+
+                    <div class="flex gap-2 items-center p-2 m-3 text-sm font-normal">
+                        <img src="Untitled.svg" alt="" width="24" height="24" class="w-6 h-6">
+                        <p>Priority Booking For All Classes</p>
+                    </div>
+
+                    <div class="px-6 mt-5">
+                        <a href="SignUp.html" class="block bg-lime-300 text-black w-full py-3 text-center text-sm font-bold cursor-pointer hover:bg-amber-500 active:bg-amber-500">Get Started</a>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+    </div>
+
+    <script src="index.js"></script>
+
+</body>
+
+</html>
