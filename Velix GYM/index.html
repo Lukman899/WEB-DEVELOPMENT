@@ -7,7 +7,6 @@
 
     <title>VELIX GYM</title>
 
-    <!-- Montserrat Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
@@ -15,18 +14,6 @@
     <link rel="stylesheet" href="output.css">
 
     <style>
-        body {
-            
-
-            background-image:
-                linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),
-                url("bg1velixgym.png");
-
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-
         .heading {
             font-family: "Montserrat", sans-serif;
         }
@@ -36,148 +23,193 @@
             -webkit-text-stroke: 1px #777;
         }
     </style>
-
 </head>
 
-<body class="text-white">
+<body class="min-h-screen bg-black text-white">
 
-    <section>
-        <header class="flex font-bold items-center justify-between px-4 py-4 flex-col md:flex-row w-full">
-            <div class="flex w-full items-center justify-between md:w-auto">
-                <h1 class="text-2xl">VELIX <span class="text-lime-300">GYM</span></h1>
-            </div>
+    <header class="sticky top-0 z-50 flex w-full flex-col items-center justify-between border-b border-white/10 bg-black/80 px-5 py-5 backdrop-blur-md md:flex-row md:px-8">
 
-            <nav class="justify-center flex gap-4 mt-3 md:mt-0 md:gap-8 lg:gap-12">
-                <a href="index.html">Home</a>
-                <a href="SignUp.html">SignUp</a>
-                <a href="Contact.html">Contact Us</a>
-            </nav>
+        <div>
+            <h1 class="text-2xl font-extrabold tracking-tight">
+                VELIX <span class="text-lime-300">GYM</span>
+            </h1>
+        </div>
 
-           
-        </header>
-    </section>
+        <nav class="mt-4 flex items-center gap-6 text-sm font-bold text-gray-300 md:mt-0 md:gap-8">
+            <a href="index.html" class="transition hover:text-lime-300">Home</a>
+            <a href="SignUp.html" class="transition hover:text-lime-300">SignUp</a>
+            <a href="Contact.html" class="transition hover:text-lime-300">Contact Us</a>
+        </nav>
 
+    </header>
 
-    <!-- HEADING -->
-    <h1 class="heading text-center font-extrabold pt-10 text-3xl md:text-4xl lg:text-5xl">
-        <span class="outline-text">FLEXIBLE</span>
-        <span>PLANS FOR</span>
-        <br>
-        <span>EVERY BUDGET</span>
-    </h1>
+    <main class="min-h-screen bg-[linear-gradient(rgba(0,0,0,0.68),rgba(0,0,0,0.78)),url('bg1velixgym.png')] bg-cover bg-center bg-fixed">
 
-    <br>
+        <section class="px-4 pt-20 text-center md:pt-28">
 
-    <small class="block text-gray-400 text-center px-4 md:text-sm lg:text-base">Choose a plan that suits you. No long-term Commitments required.</small>
+            <h1 class="heading text-4xl font-extrabold leading-tight tracking-tight md:text-5xl lg:text-6xl">
+                <span class="outline-text">FLEXIBLE</span>
+                <span> PLANS FOR</span>
+                <br>
+                <span>EVERY BUDGET</span>
+            </h1>
 
+            <p class="mx-auto mt-5 max-w-xl text-sm leading-6 text-gray-400 md:text-base">
+                Choose a plan that suits you. No long-term commitments required.
+            </p>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 px-4 md:px-8 lg:px-4 py-15 max-w-6xl mx-auto">
-
-        <section class="border border-gray-500 w-full min-h-100 bg-transparent">
-            <article class="font-extrabold">
-                <h1 class="text-center">Basic Plan</h1>
-
-                <div class="text-lime-300 p-2 font-extrabold text-center">
-                    <span class="text-4xl font-serif">$39</span>
-                    <span class="text-sm">/month</span>
-                </div>
-
-                <div>
-                    <p class="p-1 h-8 font-normal bg-zinc-600 text-center text-white w-full">3 DAYS/WEEK</p>
-
-                    <div class="flex gap-2 items-center p-2 m-3 text-sm font-normal">
-                        <img src="Untitled.svg" alt="" width="24" height="24" class="w-6 h-6">
-                        <p>Access All Cardio Classes</p>
-                    </div>
-
-                    <div class="flex gap-2 items-center p-2 m-3 text-sm font-normal">
-                        <img src="Untitled.svg" alt="" width="24" height="24" class="w-6 h-6">
-                        <p>Monthly Body Assessment</p>
-                    </div>
-
-                    <div class="flex gap-2 items-center p-2 m-3 text-sm font-normal">
-                        <img src="Untitled.svg" alt="" width="24" height="24" class="w-6 h-6">
-                        <p>Nutritional Guide</p>
-                    </div>
-
-                    <div class="px-6 mt-5">
-                        <a href="SignUp.html" class="block bg-lime-300 text-black w-full py-3 text-center text-sm font-bold cursor-pointer hover:bg-amber-500 active:bg-amber-500">Get Started</a>
-                    </div>
-                </div>
-            </article>
         </section>
 
+        <section class="mx-auto grid max-w-6xl grid-cols-1 gap-6 px-5 py-14 md:grid-cols-2 md:px-8 lg:grid-cols-3">
 
-        <section class="border border-gray-500 w-full min-h-100 bg-transparent">
-            <article class="font-extrabold">
-                <h1 class="text-center">Premium Plan</h1>
+            <article class="group flex min-h-[420px] flex-col overflow-hidden rounded-xl border border-white/15 bg-black/60 backdrop-blur-sm transition duration-300 hover:-translate-y-2 hover:border-lime-300/50">
 
-                <div class="text-lime-300 p-2 font-extrabold text-center">
-                    <span class="text-4xl font-serif">$59</span>
-                    <span class="text-sm">/month</span>
-                </div>
+                <div class="border-b border-white/10 px-6 py-7 text-center">
+                    <h2 class="text-xl font-extrabold">Basic Plan</h2>
 
-                <div>
-                    <p class="p-1 h-8 font-normal bg-zinc-600 text-center text-white w-full">3 DAYS/WEEK</p>
-
-                    <div class="flex gap-2 items-center p-2 m-3 text-sm font-normal">
-                        <img src="Untitled.svg" alt="" width="24" height="24" class="w-6 h-6">
-                        <p>All Basic Plan Features</p>
-                    </div>
-
-                    <div class="flex gap-2 items-center p-2 m-3 text-sm font-normal">
-                        <img src="Untitled.svg" alt="" width="24" height="24" class="w-6 h-6">
-                        <p>Strength Training Sessions</p>
-                    </div>
-
-                    <div class="flex gap-2 items-center p-2 m-3 text-sm font-normal">
-                        <img src="Untitled.svg" alt="" width="24" height="24" class="w-6 h-6">
-                        <p>Nutritional Guide</p>
-                    </div>
-
-                    <div class="px-6 mt-5">
-                        <a href="SignUp.html" class="block bg-lime-300 text-black w-full py-3 text-center text-sm font-bold cursor-pointer hover:bg-amber-500 active:bg-amber-500">Get Started</a>
+                    <div class="mt-3 text-lime-300">
+                        <span class="font-serif text-4xl font-bold">$39</span>
+                        <span class="text-sm text-gray-400">/month</span>
                     </div>
                 </div>
+
+                <div class="flex-1">
+
+                    <p class="bg-white/10 py-2 text-center text-xs font-bold tracking-widest text-gray-300">
+                        3 DAYS / WEEK
+                    </p>
+
+                    <div class="space-y-5 px-6 py-6 text-sm text-gray-300">
+
+                        <div class="flex items-center gap-3">
+                            <img src="Untitled.svg" alt="" class="h-5 w-5">
+                            <p>Access All Cardio Classes</p>
+                        </div>
+
+                        <div class="flex items-center gap-3">
+                            <img src="Untitled.svg" alt="" class="h-5 w-5">
+                            <p>Monthly Body Assessment</p>
+                        </div>
+
+                        <div class="flex items-center gap-3">
+                            <img src="Untitled.svg" alt="" class="h-5 w-5">
+                            <p>Nutritional Guide</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="px-6 pb-6">
+                    <a href="SignUp.html"
+                        class="block rounded-md bg-lime-300 py-3 text-center text-sm font-bold text-black transition hover:bg-lime-200">
+                        Get Started
+                    </a>
+                </div>
+
             </article>
+
+            <article class="group flex min-h-[420px] flex-col overflow-hidden rounded-xl border border-lime-300/40 bg-black/70 backdrop-blur-sm transition duration-300 hover:-translate-y-2 hover:border-lime-300">
+
+                <div class="border-b border-white/10 px-6 py-7 text-center">
+                    <div class="mb-2 text-xs font-bold uppercase tracking-widest text-lime-300">
+                        Most Popular
+                    </div>
+
+                    <h2 class="text-xl font-extrabold">Premium Plan</h2>
+
+                    <div class="mt-3 text-lime-300">
+                        <span class="font-serif text-4xl font-bold">$59</span>
+                        <span class="text-sm text-gray-400">/month</span>
+                    </div>
+                </div>
+
+                <div class="flex-1">
+
+                    <p class="bg-white/10 py-2 text-center text-xs font-bold tracking-widest text-gray-300">
+                        3 DAYS / WEEK
+                    </p>
+
+                    <div class="space-y-5 px-6 py-6 text-sm text-gray-300">
+
+                        <div class="flex items-center gap-3">
+                            <img src="Untitled.svg" alt="" class="h-5 w-5">
+                            <p>All Basic Plan Features</p>
+                        </div>
+
+                        <div class="flex items-center gap-3">
+                            <img src="Untitled.svg" alt="" class="h-5 w-5">
+                            <p>Strength Training Sessions</p>
+                        </div>
+
+                        <div class="flex items-center gap-3">
+                            <img src="Untitled.svg" alt="" class="h-5 w-5">
+                            <p>Nutritional Guide</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="px-6 pb-6">
+                    <a href="SignUp.html"
+                        class="block rounded-md bg-lime-300 py-3 text-center text-sm font-bold text-black transition hover:bg-lime-200">
+                        Get Started
+                    </a>
+                </div>
+
+            </article>
+
+            <article class="group flex min-h-[420px] flex-col overflow-hidden rounded-xl border border-white/15 bg-black/60 backdrop-blur-sm transition duration-300 hover:-translate-y-2 hover:border-lime-300/50 md:col-span-2 md:mx-auto md:w-1/2 lg:col-span-1 lg:w-full">
+
+                <div class="border-b border-white/10 px-6 py-7 text-center">
+                    <h2 class="text-xl font-extrabold">Elite Plan</h2>
+
+                    <div class="mt-3 text-lime-300">
+                        <span class="font-serif text-4xl font-bold">$89</span>
+                        <span class="text-sm text-gray-400">/month</span>
+                    </div>
+                </div>
+
+                <div class="flex-1">
+
+                    <p class="bg-white/10 py-2 text-center text-xs font-bold tracking-widest text-gray-300">
+                        3 DAYS / WEEK
+                    </p>
+
+                    <div class="space-y-5 px-6 py-6 text-sm text-gray-300">
+
+                        <div class="flex items-center gap-3">
+                            <img src="Untitled.svg" alt="" class="h-5 w-5">
+                            <p>All Premium Plan Features</p>
+                        </div>
+
+                        <div class="flex items-center gap-3">
+                            <img src="Untitled.svg" alt="" class="h-5 w-5">
+                            <p>Personal Training Sessions Per Month</p>
+                        </div>
+
+                        <div class="flex items-center gap-3">
+                            <img src="Untitled.svg" alt="" class="h-5 w-5">
+                            <p>Priority Booking For All Classes</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="px-6 pb-6">
+                    <a href="SignUp.html"
+                        class="block rounded-md bg-lime-300 py-3 text-center text-sm font-bold text-black transition hover:bg-lime-200">
+                        Get Started
+                    </a>
+                </div>
+
+            </article>
+
         </section>
 
-
-        <section class="border border-gray-500 w-full min-h-100 bg-transparent md:col-span-2 md:max-w-[50%] md:mx-auto lg:col-span-1 lg:max-w-none">
-            <article class="font-extrabold">
-                <h1 class="text-center">Elite Plan</h1>
-
-                <div class="text-lime-300 p-2 font-extrabold text-center">
-                    <span class="text-4xl font-serif">$89</span>
-                    <span class="text-sm">/month</span>
-                </div>
-
-                <div>
-                    <p class="p-1 h-8 font-normal bg-zinc-600 text-center text-white w-full">3 DAYS/WEEK</p>
-
-                    <div class="flex gap-2 items-center p-2 m-3 text-sm font-normal">
-                        <img src="Untitled.svg" alt="" width="24" height="24" class="w-6 h-6">
-                        <p>All Premium Plan Features</p>
-                    </div>
-
-                    <div class="flex gap-2 items-center p-2 m-3 text-sm font-normal">
-                        <img src="Untitled.svg" alt="" width="24" height="24" class="w-6 h-6">
-                        <p>Personal Training Sessions Per Month</p>
-                    </div>
-
-                    <div class="flex gap-2 items-center p-2 m-3 text-sm font-normal">
-                        <img src="Untitled.svg" alt="" width="24" height="24" class="w-6 h-6">
-                        <p>Priority Booking For All Classes</p>
-                    </div>
-
-                    <div class="px-6 mt-5">
-                        <a href="SignUp.html" class="block bg-lime-300 text-black w-full py-3 text-center text-sm font-bold cursor-pointer hover:bg-amber-500 active:bg-amber-500">Get Started</a>
-                    </div>
-                </div>
-            </article>
-        </section>
-
-    </div>
+    </main>
 
     <script src="index.js"></script>
 
