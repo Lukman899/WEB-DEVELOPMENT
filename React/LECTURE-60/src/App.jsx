@@ -14,9 +14,9 @@ function App() {
 
   return (
     <div>
-      {/* <Navbar count={value}/>
-      <Counter printCountValue={printCountValue}/> */}
-      <Counter/>
+      <Navbar count={value}/>
+      <Counter value={value} printCountValue={printCountValue}/>
+      {/* <Counter/> */}
       <Todo/>
     </div>
   )
