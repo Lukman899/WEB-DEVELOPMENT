@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./App.css";
-import Key from "/components/Key";
+import Key from "./components/Key";
 
 function Counter() {
   const [count, setCount] = useState(0);
