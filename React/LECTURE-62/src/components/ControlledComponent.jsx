@@ -5,7 +5,7 @@ function ControlledComponent() {
   // const [email, setEmail] = useState("");
   // const [password, setPassword] = useState("");
 
-  const [form, setForm] = useState({ name: "nishant", email: "nishant@gmail.com", password: "" });
+  const [form, setForm] = useState({ name: "Lukman", email: "shaikhlukman@example.com", password: "" });
 
   function signup(e) {
     e.preventDefault();
