@@ -476,7 +476,7 @@ function loadCart() {
                   title=${title}>
                  ${title}
                 </a>
-                <p class="text-xs text-slate-500 mt-1">₹${covertToINR(price)} each</p>
+                <p class="text-xs text-slate-500 mt-1">₹${covertToINR(price)}</p>
               </div>
             </div>
             <div class="flex items-center justify-between sm:justify-end gap-4 sm:gap-6 w-full sm:w-auto shrink-0">
