@@ -1,79 +1,552 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VELIX RESTAURANT</title>
-    <link rel="stylesheet" href="output.css">
+    <title>Velix Restaurant | Contact Us</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+        :root {
+            --bg: #111111;
+            --card: #1c1c1c;
+            --text: #f5f5f5;
+            --muted: #a5a5a5;
+            --border: #353535;
+            --accent: #e53935;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* NAVBAR */
+
+        header {
+            background: #111111;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: auto;
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .brand img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+        }
+
+        .brand h2 {
+            font-size: 23px;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .brand h2 span {
+            color: var(--accent);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        nav a {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        /* MAIN SECTION */
+
+        .main-section {
+            position: relative;
+            min-height: 100vh;
+            background-image:
+                linear-gradient(
+                    rgba(0, 0, 0, 0.82),
+                    rgba(0, 0, 0, 0.88)
+                ),
+                url('./pexels-alexandra-kollstrem-77751824-8856554.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1150px;
+            margin: auto;
+            padding: 65px 0;
+        }
+
+        /* DEMO NOTICE */
+
+        .notice {
+            background: #241b1b;
+            border-left: 4px solid var(--accent);
+            padding: 18px 22px;
+            margin-bottom: 65px;
+        }
+
+        .notice strong {
+            display: block;
+            color: var(--accent);
+            font-size: 13px;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .notice p {
+            font-size: 13px;
+            color: #d0c7c7;
+            line-height: 1.8;
+        }
+
+        /* PAGE HEADING */
+
+        .page-heading {
+            text-align: center;
+            margin-bottom: 55px;
+        }
+
+        .page-heading .small-heading {
+            color: var(--accent);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .page-heading h1 {
+            font-size: clamp(35px, 6vw, 65px);
+            font-weight: 900;
+            letter-spacing: -2px;
+            line-height: 1.15;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+
+        .page-heading h1 span {
+            color: var(--accent);
+        }
+
+        .page-heading p {
+            color: var(--muted);
+            font-size: 15px;
+        }
+
+        /* CONTACT LAYOUT */
+
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: start;
+        }
+
+        .contact-card,
+        .map-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 30px;
+            border-radius: 5px;
+        }
+
+        .contact-card h2,
+        .map-card h2 {
+            font-size: 23px;
+            font-weight: 800;
+            margin-bottom: 25px;
+        }
+
+        /* FORM */
+
+        .form-group {
+            margin-bottom: 22px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 9px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            background: #111111;
+            color: var(--text);
+            border: 1px solid #444444;
+            border-radius: 3px;
+            padding: 14px;
+            font-size: 14px;
+            font-family: inherit;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--accent);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #777777;
+        }
+
+        .form-group textarea {
+            min-height: 145px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            border: 1px solid var(--accent);
+            padding: 14px 32px;
+            font-size: 13px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            border-radius: 3px;
+            transition: background-color 0.2s;
+        }
+
+        .submit-btn:hover {
+            background: #c62828;
+        }
+
+        /* MAP */
+
+        .map-container {
+            width: 100%;
+            height: 320px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: block;
+        }
+
+        /* CONTACT DETAILS */
+
+        .contact-details {
+            margin-top: 30px;
+        }
+
+        .detail {
+            padding: 17px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .detail:last-child {
+            border-bottom: none;
+        }
+
+        .detail-label {
+            display: block;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 5px;
+        }
+
+        .detail p {
+            color: #cccccc;
+            font-size: 14px;
+            overflow-wrap: anywhere;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: var(--bg);
+            border-top: 1px solid var(--border);
+            padding: 28px 20px;
+            text-align: center;
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 850px) {
+            .contact-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .main-section {
+                background-attachment: scroll;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .navbar {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .brand h2 {
+                font-size: 21px;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+
+            .container {
+                width: 92%;
+                padding: 40px 0;
+            }
+
+            .notice {
+                margin-bottom: 50px;
+            }
+
+            .page-heading {
+                margin-bottom: 40px;
+            }
+
+            .contact-card,
+            .map-card {
+                padding: 22px;
+            }
+
+            .map-container {
+                height: 270px;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-    <header>
-        <section>
-            <div class="flex items-center bg-amber-400 gap-3.5 h-20">
-            <img src="0c6a09d4-ca60-4766-ab88-e52b5c742615.png" alt="" class="w-16 h-16">
+    <!-- NAVIGATION -->
 
-            <h2 class="font-bold text-2xl font-serif">Velix Restaurant</h2>
-            <nav class="flex items-center ml-180 font-bold gap-5">
+    <header>
+        <div class="navbar">
+
+            <div class="brand">
+                <img
+                    src="0c6a09d4-ca60-4766-ab88-e52b5c742615.png"
+                    alt="Velix Restaurant Logo"
+                >
+
+                <h2>VELIX <span>RESTAURANT</span></h2>
+            </div>
+
+            <nav>
                 <a href="index.html">Home</a>
                 <a href="index.html">About</a>
                 <a href="index.html">Menu</a>
                 <a href="index.html">Gallery</a>
             </nav>
-            </div>
-        </section>
+
+        </div>
     </header>
-<section style="background-image: url('./pexels-alexandra-kollstrem-77751824-8856554.jpg'); min-height: 100vh;"
-    class="bg-cover bg-center text-white"
->
 
-<div>
-    
+    <!-- MAIN CONTENT -->
 
-    <section class="font-bold ">*ALERT* <br>**THIS WEB IS ONLY DEMO FRONTEND. EVERYTHING MENTIONED IN IT IS FICTIONAL. THE FORM IS NOT SUBMITTABLE**.</section>
-<section>
-    <h1 class="font-bold text-center p-10 items-center text-3xl font-serif">CONTACT US FOR RESERVATIONS</h1>
-    <p class="font-bold text-center font-serif">Let's meal!</p>
+    <main class="main-section">
 
-    <form class="mt-10 ml-10 ">
-        <label for="name">Name: </label>
-        <input class="border  border-white" type="text" placeholder="Enter your name" id="name">
-        <br><br>
+        <div class="container">
 
-        <label for="email">Email: </label>
-        <input class="border border-white" type="email" placeholder="Enter your email" id="email">
-        <br><br>
+            <!-- DEMO NOTICE -->
 
-        <label for="Phone">Phone: </label>
-        <input class="border border-white" type="tel" placeholder="Enter your Phone number" id="Phone">
-        <br><br>
-        
-        <label for="message">Message: </label>
-        <textarea class="border border-white" type="" placeholder="Message" id="message"> </textarea>
-        <br><br>
-        <button class="border border-white rounded-full w-20 h-10 bg-amber-500">submit</button>
-<br><br>
-        
-    </form>
-</section>
+            <div class="notice">
+                <strong>DEMO WEBSITE NOTICE</strong>
+                <p>
+                    This website is a frontend demonstration
+                    project. All restaurant information is
+                    fictional. The reservation form does not
+                    submit or store any information.
+                </p>
+            </div>
 
-<div>
-    <iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d652.503133427979!2d72.61470321985378!3d22.31148545976356!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e6!4m5!1s0x395f05001ad76d03%3A0x6ddd9d35d9f6bfa4!2sBilal%20Masjid%2C%203%2C%20Aban%20Miya%20Chakla%2C%20Khambhat%2C%20Gujarat%20388620!3m2!1d22.3116426!2d72.61480759999999!4m5!1s0x395f06a6b5ea46af%3A0x4dec950277e0854d!2sKhambhat%2C%20Gujarat!3m2!1d22.3180817!2d72.6189845!5e0!3m2!1sen!2sin!4v1789211774030!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-</div>
-<br><br>
+            <!-- HEADING -->
 
-    <div>
-    <p class="text-black flex-1">📍 Bandra Buraj, Khambhat, Gujarat</p>
-    <p class="text-black flex-1">🕐 MON - SAT: 08:00 AM - 10:00 PM</p>
-    <p class="text-black flex-1">📱 1234567890</p>
-    <p class="text-black flex-1">✉️ Velix@restaurant.com</p>
-</div>
+            <div class="page-heading">
+                <p class="small-heading">Get In Touch</p>
 
+                <h1>
+                    CONTACT US FOR<br>
+                    <span>RESERVATIONS</span>
+                </h1>
 
-</div>
-   
+                <p>Let's meal! We'd love to hear from you.</p>
+            </div>
 
+            <!-- CONTACT SECTION -->
 
-</section>
+            <div class="contact-layout">
+
+                <!-- FORM -->
+
+                <section class="contact-card">
+
+                    <h2>Send Us A Message</h2>
+
+                    <form onsubmit="return false;">
+
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                placeholder="Enter your name"
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="Enter your email"
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input
+                                type="tel"
+                                id="phone"
+                                name="phone"
+                                placeholder="Enter your phone number"
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea
+                                id="message"
+                                name="message"
+                                placeholder="Write your message here..."
+                            ></textarea>
+                        </div>
+
+                        <button type="button" class="submit-btn">
+                            Submit
+                        </button>
+
+                    </form>
+
+                </section>
+
+                <!-- MAP & DETAILS -->
+
+                <section class="map-card">
+
+                    <h2>Find Our Location</h2>
+
+                    <div class="map-container">
+                        <iframe
+                            title="Restaurant Location Map"
+                            src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d652.503133427979!2d72.61470321985378!3d22.31148545976356!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e6!4m5!1s0x395f05001ad76d03%3A0x6ddd9d35d9f6bfa4!2sBilal%20Masjid%2C%203%2C%20Aban%20Miya%20Chakla%2C%20Khambhat%2C%20Gujarat%20388620!3m2!1d22.3116426!2d72.61480759999999!4m5!1s0x395f06a6b5ea46af%3A0x4dec950277e0854d!2sKhambhat%2C%20Gujarat!3m2!1d22.3180817!2d72.6189845!5e0!3m2!1sen!2sin!4v1789211774030!5m2!1sen!2sin"
+                            loading="lazy"
+                            referrerpolicy="strict-origin-when-cross-origin"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+
+                    <div class="contact-details">
+
+                        <div class="detail">
+                            <span class="detail-label">Address</span>
+                            <p>Bandra Buraj, Khambhat, Gujarat</p>
+                        </div>
+
+                        <div class="detail">
+                            <span class="detail-label">Opening Hours</span>
+                            <p>Monday - Saturday</p>
+                            <p>08:00 AM - 10:00 PM</p>
+                        </div>
+
+                        <div class="detail">
+                            <span class="detail-label">Phone</span>
+                            <p>1234567890</p>
+                        </div>
+
+                        <div class="detail">
+                            <span class="detail-label">Email</span>
+                            <p>Velix@restaurant.com</p>
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+
+    <footer>
+        <p>&copy; 2026 Velix Restaurant. Demo Frontend Project.</p>
+    </footer>
+
 </body>
 </html>
